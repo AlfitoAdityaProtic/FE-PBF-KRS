@@ -17,7 +17,7 @@
             <!-- Card Ucapan Selamat Datang -->
             <div class="col-md-8" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200" data-aos-easing="ease-in-out">
                 <div class="card text-center p-4"
-                    style="background: rgba(85, 82, 84, 0.47); backdrop-filter: blur(10px); border-radius: 15px;">
+                    style="background: linear-gradient(to bottom right,#FFB6A2,#56CCF2); backdrop-filter: blur(10px); border-radius: 15px;">
                     <h2 class="font-weight-bold">Selamat Datang di KRS Mahasiswa PNC</h2>
                     <p>Kelola data mahasiswa dan program studi dengan mudah</p>
                 </div>
@@ -29,27 +29,39 @@
                     style="transform: translateY(-20px); animation: fadeOut 0.8s ease-in-out forwards;">
                     <div class="col-md-10">
                         <div class="row">
+                            {{-- card jumlah mahasiswa --}}
                             <div class="col-md-6 mb-3" data-aos="fade-out" data-aos-duration="1000" data-aos-delay="400"
                                 data-aos-easing="ease-in-out">
                                 <div class="card text-white text-center p-4"
-                                    style="border-radius: 15px; font-weight: bold; font-size: 1.2rem; background: #007bff;">
-                                    <h5>Jumlah Mahasiswa</h5>
-                                    <p class="display-4 count" data-target="{{ $mahasiswa }}">0</p>
+                                    style="border-radius: 15px; font-weight: bold; font-size: 1.2rem; background: linear-gradient(to bottom right, #ffb3ab, #ff9966);">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-user-graduate fa-2x mr-3"></i> <!-- Ikon -->
+                                        <div>
+                                            <h5>Jumlah Mahasiswa</h5>
+                                            <p class="display-4 count" data-target="{{ $mahasiswa }}">0</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
+                            {{-- card jumlah prodi --}}
                             <div class="col-md-6 mb-3" data-aos="fade-out" data-aos-duration="1200" data-aos-delay="600"
                                 data-aos-easing="ease-in-out">
                                 <div class="card text-white text-center p-4"
-                                    style="border-radius: 15px; font-weight: bold; font-size: 1.2rem; background: #28a745;">
-                                    <h5>Jumlah Prodi</h5>
-                                    <p class="display-4 count" data-target="{{ $prodi }}">0</p>
+                                    style="border-radius: 15px; font-weight: bold; font-size: 1.2rem; background: linear-gradient(to bottom right, #00b4d8, #00f5d4);">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-university fa-2x mr-3"></i> <!-- Ikon -->
+                                        <div>
+                                            <h5>Jumlah Prodi</h5>
+                                            <p class="display-4 count" data-target="{{ $prodi }}">0</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             @endif
-
 
             <script src="{{ asset('node_modules/aos/dist/aos.js') }}"></script>
             <script>
@@ -98,6 +110,5 @@
                     }
                 }
             </style>
-
     </body>
 @endsection
