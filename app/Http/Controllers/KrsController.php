@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class KrsController extends Controller
 {
@@ -77,17 +78,17 @@ class KrsController extends Controller
             'NPM' => 'required|integer',
             'id_matkul' => 'required|integer',
         ]);
-        $response = Http::post('http://localhost:8080/api/pengisian-krs', [
+        $response = Http::put('http://localhost:8080/api/pengisian-krs/' . $id, [
             'timestamp' => $request->timestamp,
             'tahun_akademik' => $request->tahun_akademik,
             'NPM' => $request->NPM,
             'id_matkul' => $request->id_matkul,
         ]);
         if ($response->successful()) {
-            return redirect()->route('krs.index')->with('success', 'Data Berhasil Ditambahkan!');
+            return redirect()->route('krs.index')->with('success', 'Data Berhasil DiUbah!');
         }
 
-        return back()->with('error', 'Gagal Menambahkan data');
+        return back()->with('error', 'Gagal Mengubah data');
     }
 
     /**
@@ -101,5 +102,16 @@ class KrsController extends Controller
             return redirect()->route('krs.index')->with('success', 'Data berhasil dihapus');
         }
         return back()->with('error', 'Gagal Menghapus data');
+    }
+
+    //export pdf
+    public function exportPdf(){
+        $response = Http::get('http://localhost:8080/api/pengisian-krs');
+        $data = $response->json();
+
+        $krsData = collect($data['data_pengisian_krs'] ?? []);
+
+        $pdf = Pdf::loadView('pdf.KRS', ['krsData' => $krsData]);
+        return $pdf->download('Data_KRS.pdf');
     }
 }

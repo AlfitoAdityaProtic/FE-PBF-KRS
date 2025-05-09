@@ -36,7 +36,7 @@
                         <a href="{{ url('/export-krs-pdf') }}" class="btn btn-outline-warning mb-3 float-right shadow">
                             <i class="fas fa-download mr-2"></i>
                             PDF</a>
-                        <a href="{{ url('/export-krs') }}" class="btn btn-outline-secondary mb-3 float-right mr-2 shadow"><i
+                        <a href="{{ url('export-krs') }}" class="btn btn-outline-secondary mb-3 float-right mr-2 shadow"><i
                                 class="fas fa-file-download mr-2"></i> Excel</a>
 
                         @if (session('success'))
