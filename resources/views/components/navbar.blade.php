@@ -61,7 +61,7 @@
         border: none;
         height: 60px;
         padding: 0.25rem 1rem;
-        z-index: 1040;
+        z-index: 1000;
     }
 
     .main-header .navbar-nav .nav-link {
